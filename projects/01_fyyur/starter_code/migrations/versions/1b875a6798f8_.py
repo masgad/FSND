@@ -29,7 +29,7 @@ def upgrade():
     sa.Column('website', sa.String(length=120), nullable=True),
     sa.Column('image_link', sa.String(length=500), nullable=True),
     sa.Column('facebook_link', sa.String(length=120), nullable=True),
-    sa.Column('seeking_venue', sa.Boolean(), nullable=True),
+    sa.Column('seeking_talent', sa.Boolean(), nullable=True),
     sa.Column('seeking_description', sa.String(length=500), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )

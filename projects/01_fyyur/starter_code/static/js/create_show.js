@@ -1,20 +1,11 @@
     document.getElementById('form').onsubmit = function (e) {
         e.preventDefault();
-
         fetch('/venues/create', {
             method: 'POST',
             body: JSON.stringify({
-                'name': document.getElementById('form.name').value,
-                'state': document.getElementById('form.state').value,
-                'city': document.getElementById('form.city').value,
-                'phone': document.getElementById('form.phone').value,
-                'address': document.getElementById('form.address').value,
-                'image_link': document.getElementById('form.image_link').value,
-                'genres': document.getElementById('form.genres').value,
-                'facebook_link': document.getElementById('form.facebook_link').value,
-                'website': document.getElementById('form.website').value,
-                'seek_talent': document.getElementById('form.seek_talent').value,
-                'seek_description': document.getElementById('form.seek_description').value
+                'artist_id': document.getElementById('form.artist_id').value,
+                'venue_id': document.getElementById('form.venue_id').value,
+                'start_time': document.getElementById('form.start_time').value
             }),
             headers: {
                 'Content-Type': 'application/json'

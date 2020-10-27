@@ -5,10 +5,10 @@ from wtforms.validators import DataRequired, AnyOf, URL, Length
 
 class ShowForm(Form):
     artist_id = StringField(
-        'artist_id'
+        'artist_id', validators=[DataRequired()],
     )
     venue_id = StringField(
-        'venue_id'
+        'venue_id', validators=[DataRequired()],
     )
     start_time = DateTimeField(
         'start_time',
@@ -86,7 +86,7 @@ class VenueForm(Form):
         'phone'
     )
     image_link = StringField(
-        'image_link'
+        'image_link', validators=[URL()]
     )
     genres = SelectMultipleField(
         # TODO implement enum restriction
@@ -113,8 +113,8 @@ class VenueForm(Form):
             ('Other', 'Other'),
         ]
     )
-    facebook_link = StringField(
-        'facebook_link', validators=[URL()]
+    facebook = StringField(
+        'facebook', validators=[URL()]
     )
     website = StringField(
         'website', validators=[URL()]
@@ -190,12 +190,16 @@ class ArtistForm(Form):
             ('WY', 'WY'),
         ]
     )
+    address = StringField(
+        'address', validators=[DataRequired()]
+    )
+
     phone = StringField(
         # DONE implement validation logic for state
         'phone', validators=[DataRequired()],
     )
     image_link = StringField(
-        'image_link'
+        'image_link', validators=[URL()]
     )
     genres = SelectMultipleField(
         # TODO implement enum restriction
@@ -222,9 +226,18 @@ class ArtistForm(Form):
             ('Other', 'Other'),
         ]
     )
-    facebook_link = StringField(
+    facebook = StringField(
         # TODO implement enum restriction
-        'facebook_link', validators=[URL()]
+        'facebook', validators=[URL()]
     )
+    website = StringField(
+        'website', validators=[URL()]
+    )
+    seeking_talent = BooleanField(
+        'seeking_talent'
+    )
+    seeking_description = StringField(
+        'seeking_description', validators = [Length(max=500)]   
+    )    
 
 # TODO IMPLEMENT NEW ARTIST FORM AND NEW SHOW FORM

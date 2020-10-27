@@ -52,6 +52,19 @@ p.lead {
 #front-splash {
 	width: 100%;
 }
+.column {
+  flex: 50%;
+  /*float: left;
+  width: 50%;
+  padding: 10px;*/
+  /*height: 300px;*/
+}
+.row:after {
+  display: flex;
+/*  content: "";
+  display: table;
+  clear: both;
+*/}
 .navbar.navbar-fixed-top {
   background: none;
   box-shadow: none;
@@ -80,6 +93,16 @@ p.lead {
   font-size: 1.4rem;
 }
 
+li button {
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  color: red;
+  float: right;
+  cursor: pointer;
+  font-size: 25px;
+}
+
 .btn-default {
     border: none;
     background-color: #dde2e7;
@@ -100,6 +123,7 @@ ul.items {
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 550px;
 }
 ul.items > li > a {
   margin-bottom: 15px;

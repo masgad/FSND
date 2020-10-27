@@ -10,18 +10,21 @@
 			<a href="/venues/{{ venue.id }}">
 				<i class="fas fa-music"></i>
 				<div class="item">
-					<h5>{{ venue.name }}
-					{% for us in upcoming_shows %}
-					{% if venue.id == us[0] %} (Upcoming Shows: {{ us[1] }})
-					{% else %} (Upcoming Shows:0)
-				    </h5>
-				    {% endif %}
-				    {% endfor %}
+					<h5>
+						{{ venue.name }}
+						(Upcoming Shows:
+						{% for us in upcoming_shows %}
+							{% if venue.id == us[0] %} {{ us[1] }} {% endif %}
+						{% endfor %} )
+						<button class="delete-button" data-id="{{ venue.id }}">&cross;</button>
+					</h5>				    				    
 				</div>
 			</a>
+			
 		</li>
 		{% endif %}
 		{% endfor %}
+
 	</ul>
 {% endfor %}
 {% endblock %}
