@@ -5,7 +5,7 @@
 import json
 import dateutil.parser
 import babel
-from flask import Flask, render_template, request, Response, flash, redirect, url_for, jsonify
+from flask import Flask, render_template, request, Response, flash, redirect, url_for, jsonify, abort
 from flask_migrate import Migrate
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
@@ -15,6 +15,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from forms import *
 from datetime import datetime
+import sys
 #----------------------------------------------------------------------------#
 # App Config.
 #----------------------------------------------------------------------------#
@@ -175,7 +176,7 @@ def create_venue_submission():
 		db.session.commit()
 	# on successful db insert, flash success
 		flash('Venue ' + request.form['name'] + ' was successfully listed!')
-
+	except:
 		db.session.rollback()
 		error = True
 		print(sys.exc_info())
@@ -191,12 +192,11 @@ def create_venue_submission():
 
 @app.route('/venues/<venue_id>/delete', methods=['DELETE'])
 def delete_venue(venue_id):
-  # TODO: Complete this endpoint for taking a venue_id, and using
+  # DONE: Complete this endpoint for taking a venue_id, and using
   # SQLAlchemy ORM to delete a record. Handle cases where the session commit could fail.
 
-  # BONUS CHALLENGE: Implement a button to delete a Venue on a Venue Page, have it so that
+  # DONE: BONUS CHALLENGE: Implement a button to delete a Venue on a Venue Page, have it so that
   # clicking that button delete it from the db then redirect the user to the homepage
-
     error = False
     print("VENUE ID: ", venue_id)
     try:
@@ -219,7 +219,10 @@ def delete_venue(venue_id):
     if error:
         abort(500)
     else:
-        return jsonify({'success': True})
+    	return jsonify({'success': True})
+
+    #Redirect to the home page	
+    # render_template('pages/home.html')
 
 #  Artists
 #  ----------------------------------------------------------------
