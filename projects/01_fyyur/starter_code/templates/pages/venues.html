@@ -4,15 +4,23 @@
 {% for area in areas %}
 <h3>{{ area.city }}, {{ area.state }}</h3>
 	<ul class="items">
-		{% for venue in area.venues %}
+		{% for venue in venues %}
+		{% if venue.state == area.state and venue.city == area.city %}
 		<li>
 			<a href="/venues/{{ venue.id }}">
 				<i class="fas fa-music"></i>
 				<div class="item">
-					<h5>{{ venue.name }}</h5>
+					<h5>{{ venue.name }}
+					{% for us in upcoming_shows %}
+					{% if venue.id == us[0] %} (Upcoming Shows: {{ us[1] }})
+					{% else %} (Upcoming Shows:0)
+				    </h5>
+				    {% endif %}
+				    {% endfor %}
 				</div>
 			</a>
 		</li>
+		{% endif %}
 		{% endfor %}
 	</ul>
 {% endfor %}
