@@ -1,6 +1,6 @@
     document.getElementById('form').onsubmit = function (e) {
         e.preventDefault();
-        fetch('/venues/create', {
+        fetch('/shows/create', {
             method: 'POST',
             body: JSON.stringify({
                 'artist_id': document.getElementById('form.artist_id').value,

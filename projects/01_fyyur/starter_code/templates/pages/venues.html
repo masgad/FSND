@@ -6,22 +6,22 @@
 	<ul class="items">
 		{% for venue in venues %}
 		{% if venue.state == area.state and venue.city == area.city %}
-		<li>
-			<a href="/venues/{{ venue.id }}">
-				<i class="fas fa-music"></i>
-				<div class="item">
-					<h5>
-						{{ venue.name }}
-						(Upcoming Shows:
-						{% for us in upcoming_shows %}
-							{% if venue.id == us[0] %} {{ us[1] }} {% endif %}
-						{% endfor %} )
-						<button class="delete-button" data-id="{{ venue.id }}">&cross;</button>
-					</h5>				    				    
-				</div>
-			</a>
-			
-		</li>
+		<div class="item">
+			<li>			
+				
+				<a href="/venues/{{ venue.id }}"> 
+					<i class="fas fa-music"></i>
+				{{ venue.name }}
+				</a>
+					(Upcoming Shows:
+					{% for us in upcoming_shows %}
+					{% if venue.id == us[0] %} {{ us[1] }} {% endif %}
+					{% endfor %} )
+				
+				<button class="delete-button" data-id="{{ venue.id }}">&cross;</button>
+				<a href="/venues/{{ venue.id }}/edit"><button class= "btn" data-id="{{ venue.id }}">Edit</button></a>
+			</li>
+		</div>
 		{% endif %}
 		{% endfor %}
 
